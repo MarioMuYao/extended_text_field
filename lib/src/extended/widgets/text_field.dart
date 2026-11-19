@@ -3,16 +3,16 @@ import 'dart:collection';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
+import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:extended_text_field/src/extended/cupertino/spell_check_suggestions_toolbar.dart';
 import 'package:extended_text_field/src/extended/material/spell_check_suggestions_toolbar.dart';
 import 'package:extended_text_library/extended_text_library.dart';
-import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:material_ui/material_ui.dart';
 
 part 'package:extended_text_field/src/extended/rendering/editable.dart';
 part 'package:extended_text_field/src/extended/widgets/editable_text.dart';
@@ -290,7 +290,7 @@ class ExtendedTextFieldState extends _TextFieldState {
 
     final ThemeData theme = Theme.of(context);
     final DefaultSelectionStyle selectionStyle = DefaultSelectionStyle.of(context);
-    final TextStyle? providedStyle = MaterialStateProperty.resolveAs(widget.style, _statesController.value);
+    final TextStyle? providedStyle = WidgetStateProperty.resolveAs(widget.style, _statesController.value);
     final TextStyle style =
         _getInputStyleForState(theme.useMaterial3 ? _m3InputStyle(context) : theme.textTheme.titleMedium!)
             .merge(providedStyle);
@@ -348,7 +348,7 @@ class ExtendedTextFieldState extends _TextFieldState {
         cursorOpacityAnimates ??= true;
         cursorColor =
             _hasError ? _errorColor : widget.cursorColor ?? selectionStyle.cursorColor ?? cupertinoTheme.primaryColor;
-        selectionColor = selectionStyle.selectionColor ?? cupertinoTheme.primaryColor.withOpacity(0.40);
+        selectionColor = selectionStyle.selectionColor ?? cupertinoTheme.primaryColor.withValues(alpha: 0.40);
         cursorRadius ??= const Radius.circular(2.0);
         cursorOffset = Offset(iOSHorizontalOffset / MediaQuery.devicePixelRatioOf(context), 0);
         autocorrectionTextRectColor = selectionColor;
@@ -361,7 +361,7 @@ class ExtendedTextFieldState extends _TextFieldState {
         cursorOpacityAnimates ??= false;
         cursorColor =
             _hasError ? _errorColor : widget.cursorColor ?? selectionStyle.cursorColor ?? cupertinoTheme.primaryColor;
-        selectionColor = selectionStyle.selectionColor ?? cupertinoTheme.primaryColor.withOpacity(0.40);
+        selectionColor = selectionStyle.selectionColor ?? cupertinoTheme.primaryColor.withValues(alpha: 0.40);
         cursorRadius ??= const Radius.circular(2.0);
         cursorOffset = Offset(iOSHorizontalOffset / MediaQuery.devicePixelRatioOf(context), 0);
         handleDidGainAccessibilityFocus = () {
@@ -382,7 +382,7 @@ class ExtendedTextFieldState extends _TextFieldState {
         cursorOpacityAnimates ??= false;
         cursorColor =
             _hasError ? _errorColor : widget.cursorColor ?? selectionStyle.cursorColor ?? theme.colorScheme.primary;
-        selectionColor = selectionStyle.selectionColor ?? theme.colorScheme.primary.withOpacity(0.40);
+        selectionColor = selectionStyle.selectionColor ?? theme.colorScheme.primary.withValues(alpha: 0.40);
 
       case TargetPlatform.linux:
         forcePressEnabled = false;
@@ -391,7 +391,7 @@ class ExtendedTextFieldState extends _TextFieldState {
         cursorOpacityAnimates ??= false;
         cursorColor =
             _hasError ? _errorColor : widget.cursorColor ?? selectionStyle.cursorColor ?? theme.colorScheme.primary;
-        selectionColor = selectionStyle.selectionColor ?? theme.colorScheme.primary.withOpacity(0.40);
+        selectionColor = selectionStyle.selectionColor ?? theme.colorScheme.primary.withValues(alpha: 0.40);
         handleDidGainAccessibilityFocus = () {
           // Automatically activate the TextField when it receives accessibility focus.
           if (!_effectiveFocusNode.hasFocus && _effectiveFocusNode.canRequestFocus) {
@@ -409,7 +409,7 @@ class ExtendedTextFieldState extends _TextFieldState {
         cursorOpacityAnimates ??= false;
         cursorColor =
             _hasError ? _errorColor : widget.cursorColor ?? selectionStyle.cursorColor ?? theme.colorScheme.primary;
-        selectionColor = selectionStyle.selectionColor ?? theme.colorScheme.primary.withOpacity(0.40);
+        selectionColor = selectionStyle.selectionColor ?? theme.colorScheme.primary.withValues(alpha: 0.40);
         handleDidGainAccessibilityFocus = () {
           // Automatically activate the TextField when it receives accessibility focus.
           if (!_effectiveFocusNode.hasFocus && _effectiveFocusNode.canRequestFocus) {
@@ -517,8 +517,8 @@ class ExtendedTextFieldState extends _TextFieldState {
         child: child,
       );
     }
-    final MouseCursor effectiveMouseCursor = MaterialStateProperty.resolveAs<MouseCursor>(
-      widget.mouseCursor ?? MaterialStateMouseCursor.textable,
+    final MouseCursor effectiveMouseCursor = WidgetStateProperty.resolveAs<MouseCursor>(
+      widget.mouseCursor ?? WidgetStateMouseCursor.textable,
       _statesController.value,
     );
 

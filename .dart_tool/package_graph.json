@@ -40,6 +40,7 @@
       "dependencies": [
         "characters",
         "collection",
+        "listen",
         "material_color_utilities",
         "meta",
         "sky_engine",
@@ -48,25 +49,12 @@
     },
     {
       "name": "cupertino_ui",
-      "version": "1.1.4",
+      "version": "1.1.7",
       "dependencies": [
         "collection",
         "flutter",
         "flutter_localizations",
         "intl"
-      ]
-    },
-    {
-      "name": "material_ui",
-      "version": "1.8.0",
-      "dependencies": [
-        "collection",
-        "cupertino_ui",
-        "flutter",
-        "flutter_localizations",
-        "intl",
-        "material_color_utilities",
-        "vector_math"
       ]
     },
     {
@@ -147,7 +135,7 @@
     },
     {
       "name": "test_api",
-      "version": "0.7.12",
+      "version": "0.7.14",
       "dependencies": [
         "async",
         "boolean_selector",
@@ -170,6 +158,13 @@
       "version": "0.13.0",
       "dependencies": [
         "collection"
+      ]
+    },
+    {
+      "name": "listen",
+      "version": "1.0.1",
+      "dependencies": [
+        "meta"
       ]
     },
     {
@@ -256,6 +251,19 @@
       "name": "vm_service",
       "version": "15.4.0",
       "dependencies": []
+    },
+    {
+      "name": "material_ui",
+      "version": "1.11.1",
+      "dependencies": [
+        "collection",
+        "cupertino_ui",
+        "flutter",
+        "flutter_localizations",
+        "intl",
+        "material_color_utilities",
+        "vector_math"
+      ]
     }
   ],
   "configVersion": 1

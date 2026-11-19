@@ -728,7 +728,7 @@ class ExtendedEditableTextState extends _EditableTextState {
       // `selection` is the only change.
       SelectionChangedCause cause;
       if (_textInputConnection?.scribbleInProgress ?? false) {
-        cause = SelectionChangedCause.scribble;
+        cause = SelectionChangedCause.stylusHandwriting;
       } else if (_pointOffsetOrigin != null) {
         cause = SelectionChangedCause.forcePress;
       } else {

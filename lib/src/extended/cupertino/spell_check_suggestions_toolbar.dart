@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:extended_text_field/src/extended/widgets/text_field.dart';
 import 'package:cupertino_ui/cupertino_ui.dart';
+import 'package:extended_text_field/src/extended/widgets/text_field.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart' show SelectionChangedCause, SuggestionSpan;
 
